@@ -18,10 +18,18 @@
             <th>対象グループ</th>
             <th>詳細</th>
         </tr>
-        <?php foreach($events as $event): ?>
+        <?php foreach($events as $index => $event): ?>
+            <?php
+				$start = new DateTime($event->start);
+			?>
             <tr>
-                <td><?= $event->title; ?></td>
-                <td><?= $event->start; ?></td>
+                <td>
+                    <?= $event->title; ?>
+                    <?php if((int)$count[$index][0]->count === 1) :?>
+                        <span>参加</span>
+                    <?php endif; ?>
+                </td>
+                <td><?= $start->format('Y年m月d日 H時i分'); ?></td>
                 <td><?= $event->place; ?></td>
                 <td><?= $event->group_id; ?></td>
                 <td><a href="<?= base_url("Event/event_get")."/".$event->id; ?>">詳細</a></td>

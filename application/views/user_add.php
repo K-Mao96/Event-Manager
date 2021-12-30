@@ -21,7 +21,7 @@
             <?= form_error('login_id','<p>','</p>'); ?>
             <?= form_input('login_id', set_value('login_id')); ?>
         </p>
-        <p>パスワード（変更の場合のみ）</p>
+        <p>パスワード</p>
         <p>
             <?= form_error('login_pass','<p>','</p>'); ?>
             <?= form_password('login_pass', set_value('login_pass')); ?>

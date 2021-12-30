@@ -2,7 +2,7 @@
 class User extends CI_Controller {
 
 	//ページネーション
-    const NUM_PER_PAGE = 3;
+    const NUM_PER_PAGE = 5;
     const TABLE = 'users';
 
     //権限のチェック処理

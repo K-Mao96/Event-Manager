@@ -27,7 +27,7 @@
             <?= form_error('login_pass','<p>','</p>'); ?>
             <?= form_password('login_pass', set_value('login_pass')); ?>
         </p>
-        <p>所属グループ</p>
+        <p>所属グループ（必須）</p>
         <p>
             <?= form_error('group','<p>','</p>'); ?>
             <?= form_dropdown('group', $groups); ?>

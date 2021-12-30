@@ -2,7 +2,7 @@
 class Event extends CI_Controller {
 
     //ページネーション
-    const NUM_PER_PAGE = 3;
+    const NUM_PER_PAGE = 5;
     const TABLE = 'events';
 
     //ログイン機能
@@ -25,6 +25,7 @@ class Event extends CI_Controller {
                      $this->session->set_userdata('user_id',$result[0]->id);
                      $this->session->set_userdata('type_id',(int)$result[0]->type_id);
                      $this->session->set_userdata('login_id',$posts['login_id']);
+                     $this->session->set_userdata('user_name',$result[0]->name);
                      $this->session->set_userdata('time',time());
 
      
@@ -126,12 +127,17 @@ class Event extends CI_Controller {
         $config['use_page_numbers'] = TRUE;
         $this->pagination->initialize($config);
 
+        foreach($data['events'] as $event) {
+            $data['count'][] = $this->event_model->get_attend_events($this->session->userdata('user_id'),$event->id);
+        }
+
         $this->load->view('event_today',$data);
     }
     
     public function event_add() {
         $this->load->model('event_model');
 
+        $this->form_validation->set_rules('title','タイトル','required');
         $this->form_validation->set_rules('start','開始日時','required');
         $this->form_validation->set_rules('place','場所','required');
 
@@ -210,6 +216,7 @@ class Event extends CI_Controller {
         // $this->load->helper('form');
         // $this->load->library('form_validation');
         
+        $this->form_validation->set_rules('title','タイトル','required');
         $this->form_validation->set_rules('start','開始日時','required');
         $this->form_validation->set_rules('place','場所','required');
 

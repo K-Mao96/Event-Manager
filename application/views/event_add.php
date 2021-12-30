@@ -5,7 +5,7 @@ $start = [
     'type' => 'datetime-local'
 ];
 $end = [
-	'name' => 'start',
+	'name' => 'end',
     'value' => set_value('end'),
     'type' => 'datetime-local'
 ];
@@ -23,7 +23,7 @@ $end = [
     <h2>08 イベント情報の登録</h2>
 
     <?= form_open(); ?>
-        <p>タイトル</p>
+        <p>タイトル（必須）</p>
         <p>
             <?= form_error('title','<p>','</p>'); ?>
             <?= form_input('title', set_value('title')); ?>
@@ -55,7 +55,7 @@ $end = [
         </p>
 
         <p><a href="<?= base_url("Event/event_index");?>">キャンセル</a></p>
-        <p><?= form_submit(null,'保存'); ?></p>
+        <p><?= form_submit(null,'登録'); ?></p>
     <?= form_close(); ?>
 </body>
 </html>
